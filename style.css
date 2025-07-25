@@ -1,0 +1,397 @@
+/* Общие стили */
+:root {
+    --dark-blue: #0A1128; /* Темно-синий фон */
+    --gold: #FFD700;     /* Золотой для волн и акцентов */
+    --red: #D82148;      /* Красный для кнопок/акцентов */
+    --light-text: #E0E0E0; /* Светлый текст */
+    --grey-text: #AAAAAA;  /* Серый текст */
+}
+
+body {
+    font-family: 'Segoe UI', 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: var(--dark-blue);
+    color: var(--light-text);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+a {
+    color: var(--gold);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--red);
+}
+
+h1, h2, h3 {
+    color: var(--light-text);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+p {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* Шапка сайта */
+.main-header {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 15px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 2em;
+    font-weight: bold;
+    color: var(--gold);
+    text-transform: uppercase;
+}
+
+.nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 30px;
+}
+
+.nav-links a {
+    color: var(--light-text);
+    font-weight: 500;
+    font-size: 1.1em;
+    padding: 5px 0;
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: var(--gold);
+    left: 0;
+    bottom: -5px;
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* Секции с фоном (волны) */
+.section-bg {
+    position: relative;
+    padding: 120px 0 80px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: var(--dark-blue); /* Убедимся, что фон секции темно-синий */
+}
+
+/* Псевдоэлемент для волн внизу */
+.section-bg::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 200px; /* Установи желаемую высоту волн. Подбери так, чтобы картинка хорошо смотрелась */
+    background-image: url('your-waves-image.png'); /* <--- ЗАМЕНИ НА ПУТЬ К СВОЕЙ КАРТИНКЕ ВОЛН */
+    background-repeat: no-repeat; /* Обычно волны не повторяются, а растягиваются */
+    background-size: cover; /* Растянуть изображение, чтобы оно покрывало всю ширину, сохраняя пропорции */
+    /* Или background-size: 100% 100%; если ты хочешь, чтобы оно занимало точно 100% ширины и 100% заданной высоты (может исказить) */
+    /* Или background-size: 100% auto; чтобы оно занимало 100% ширины, а высота подстраивалась автоматически, сохраняя пропорции */
+
+    background-position: bottom center; /* Расположить волны внизу по центру */
+    z-index: 1; /* Чтобы волны были на переднем плане относительно фона секции, но под контентом */
+}
+
+.section-bg .content {
+    position: relative;
+    z-index: 2; /* Контент должен быть поверх волн */
+}
+
+/* Главный экран (Hero Section) */
+.hero-section {
+    text-align: center;
+    padding-top: 200px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-section h1 {
+    font-size: 4em;
+    margin-bottom: 10px;
+    color: var(--gold);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.hero-section .tagline {
+    font-size: 1.5em;
+    margin-bottom: 40px;
+    color: var(--light-text);
+}
+
+.app-logo {
+    width: 150px;
+    height: auto;
+    margin-bottom: 30px;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 15px 30px;
+    border-radius: 5px;
+    font-size: 1.2em;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.primary-btn {
+    background-color: var(--red);
+    color: var(--light-text);
+}
+
+.primary-btn:hover {
+    background-color: #bb1d40;
+}
+
+.secondary-btn {
+    background-color: transparent;
+    color: var(--gold);
+    border: 2px solid var(--gold);
+}
+
+.secondary-btn:hover {
+    background-color: var(--gold);
+    color: var(--dark-blue);
+}
+
+/* Секции информации и возможностей */
+.info-section, .features-section {
+    background-color: rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.info-section p {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.1em;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.feature-item {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.feature-item:hover {
+    transform: translateY(-5px);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.feature-item i {
+    font-size: 3em;
+    color: var(--gold);
+    margin-bottom: 20px;
+}
+
+.feature-item h3 {
+    font-size: 1.5em;
+    color: var(--light-text);
+    margin-bottom: 10px;
+}
+
+.feature-item p {
+    font-size: 0.95em;
+    color: var(--grey-text);
+}
+
+/* Секция скачивания */
+.download-section {
+    text-align: center;
+}
+
+.download-links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+.app-store-btn,
+.google-play-btn {
+    display: flex;
+    align-items: center;
+    background-color: #000;
+    color: #fff;
+    padding: 15px 30px;
+    border-radius: 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.app-store-btn i,
+.google-play-btn i {
+    font-size: 2em;
+    margin-right: 15px;
+}
+
+.app-store-btn:hover,
+.google-play-btn:hover {
+    background-color: #333;
+}
+
+.qr-codes {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 50px;
+    flex-wrap: wrap;
+}
+
+.qr-code {
+    width: 200px;
+    height: 500px;
+    background-color: #000000;
+    border-radius: 5px;
+     padding: 5px; 
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.small-text {
+    font-size: 0.85em;
+    color: var(--grey-text);
+    margin-top: 10px;
+}
+
+/* Футер */
+.main-footer {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 30px 0;
+    text-align: center;
+    color: var(--grey-text);
+    font-size: 0.9em;
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 768px) {
+    .main-header .container {
+        flex-direction: column;
+    }
+    .nav-links {
+        margin-top: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .nav-links li {
+        margin: 0 15px 10px;
+    }
+
+    .hero-section h1 {
+        font-size: 3em;
+    }
+
+    .hero-section .tagline {
+        font-size: 1.2em;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .btn {
+        width: 80%;
+        max-width: 300px;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .download-links {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 1.5em;
+    }
+    .nav-links a {
+        font-size: 0.9em;
+    }
+    .hero-section h1 {
+        font-size: 2.5em;
+    }
+    .hero-section .tagline {
+        font-size: 1em;
+    }
+    .section-bg {
+        padding: 100px 0 60px;
+    }
+    .app-logo {
+        width: 100px;
+    }
+    .qr-code {
+        width: 250px;
+        height: 380px;
+    }
+}
